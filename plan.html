@@ -1,0 +1,1915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GreenHaven College | Green Campus</title>
+
+    <style>
+        /* =========================
+           GLOBAL STYLES
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --green-dark: #123c2a;
+            --green: #198754;
+            --green-light: #35b978;
+            --mint: #e8f8ef;
+            --lime: #b8e986;
+            --white: #ffffff;
+            --black: #14201a;
+            --gray: #66736b;
+            --light: #f6fbf8;
+            --orange: #f59e0b;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: var(--black);
+            background: var(--light);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .container {
+            width: min(1150px, 90%);
+            margin: auto;
+        }
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title .small-title {
+            color: var(--green);
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: clamp(30px, 5vw, 44px);
+            margin: 8px 0 15px;
+            color: var(--green-dark);
+        }
+
+        .section-title p {
+            max-width: 650px;
+            margin: auto;
+            color: var(--gray);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--green);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--green-dark);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+            margin-left: 10px;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--green-dark);
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+        }
+
+        nav {
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 21px;
+            font-weight: 800;
+            color: var(--green-dark);
+        }
+
+        .logo-icon {
+            width: 43px;
+            height: 43px;
+            background: var(--green);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 23px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 600;
+            color: #35453c;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+            padding-top: 75px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                radial-gradient(circle at 90% 20%, rgba(184,233,134,0.35), transparent 25%),
+                radial-gradient(circle at 10% 80%, rgba(53,185,120,0.15), transparent 30%),
+                linear-gradient(135deg, #f2fff7, #dff5e9);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(25,135,84,0.06);
+            right: -150px;
+            top: 100px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 55%;
+        }
+
+        .badge {
+            display: inline-flex;
+            padding: 8px 15px;
+            background: white;
+            border-radius: 30px;
+            color: var(--green);
+            font-size: 13px;
+            font-weight: 700;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 6vw, 75px);
+            line-height: 1.05;
+            color: var(--green-dark);
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: var(--green);
+        }
+
+        .hero p {
+            color: var(--gray);
+            max-width: 600px;
+            font-size: 17px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* Hero Illustration */
+
+        .hero-art {
+            position: absolute;
+            right: 5%;
+            width: 420px;
+            height: 420px;
+            z-index: 1;
+        }
+
+        .sun {
+            position: absolute;
+            right: 30px;
+            top: 10px;
+            width: 100px;
+            height: 100px;
+            background: #ffd45a;
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(255,196,40,.5);
+        }
+
+        .hill {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            height: 180px;
+            background: #83ca7a;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .hill.two {
+            width: 90%;
+            height: 130px;
+            bottom: 30px;
+            left: 100px;
+            background: #4da66b;
+        }
+
+        .tree {
+            position: absolute;
+            bottom: 100px;
+            left: 70px;
+            font-size: 120px;
+            z-index: 3;
+        }
+
+        .tree.two {
+            left: 260px;
+            bottom: 75px;
+            font-size: 90px;
+        }
+
+        .solar {
+            position: absolute;
+            width: 150px;
+            height: 80px;
+            background: #1d4771;
+            border: 7px solid #d5e7ef;
+            transform: skew(-12deg);
+            bottom: 85px;
+            left: 125px;
+            z-index: 4;
+            background-image:
+                linear-gradient(90deg, transparent 24%, #77a9c6 25%, transparent 26%),
+                linear-gradient(transparent 24%, #77a9c6 25%, transparent 26%);
+            background-size: 35px 35px;
+        }
+
+
+        /* =========================
+           STATS
+        ========================== */
+
+        .stats {
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 50px rgba(20,70,40,0.1);
+        }
+
+        .stat {
+            text-align: center;
+            padding: 15px;
+            border-right: 1px solid #e5eee9;
+        }
+
+        .stat:last-child {
+            border: none;
+        }
+
+        .stat h3 {
+            font-size: 32px;
+            color: var(--green);
+        }
+
+        .stat p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           ABOUT COLLEGE
+        ========================== */
+
+        .about {
+            background: white;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-visual {
+            min-height: 420px;
+            border-radius: 30px;
+            background:
+                linear-gradient(145deg, rgba(25,135,84,.9), rgba(18,60,42,.95));
+            position: relative;
+            overflow: hidden;
+            padding: 40px;
+            color: white;
+        }
+
+        .about-visual h3 {
+            font-size: 35px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-visual p {
+            position: relative;
+            z-index: 2;
+            margin-top: 10px;
+            opacity: .85;
+        }
+
+        .leaf {
+            position: absolute;
+            font-size: 160px;
+            right: -20px;
+            bottom: -30px;
+            opacity: .2;
+        }
+
+        .about-content h2 {
+            font-size: 42px;
+            color: var(--green-dark);
+            margin-bottom: 18px;
+        }
+
+        .about-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .feature {
+            padding: 15px;
+            background: var(--mint);
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .feature span {
+            color: var(--green);
+            margin-right: 5px;
+        }
+
+
+        /* =========================
+           ACTIVITIES
+        ========================== */
+
+        .activities {
+            background: #f5fbf7;
+        }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .activity-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(20,70,40,.07);
+            transition: .35s;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(20,70,40,.14);
+        }
+
+        .activity-icon {
+            height: 180px;
+            display: grid;
+            place-items: center;
+            font-size: 70px;
+            background: linear-gradient(135deg,#dff7e8,#bcefcf);
+        }
+
+        .activity-card:nth-child(2) .activity-icon {
+            background: linear-gradient(135deg,#fff4cf,#ffe18a);
+        }
+
+        .activity-card:nth-child(3) .activity-icon {
+            background: linear-gradient(135deg,#d9efff,#acd9f8);
+        }
+
+        .activity-card:nth-child(4) .activity-icon {
+            background: linear-gradient(135deg,#e5dfff,#c9bdf5);
+        }
+
+        .activity-card:nth-child(5) .activity-icon {
+            background: linear-gradient(135deg,#ffe3df,#ffc3bc);
+        }
+
+        .activity-card:nth-child(6) .activity-icon {
+            background: linear-gradient(135deg,#dcf5f0,#a8e4d6);
+        }
+
+        .activity-body {
+            padding: 24px;
+        }
+
+        .activity-body h3 {
+            color: var(--green-dark);
+            margin-bottom: 8px;
+        }
+
+        .activity-body p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           SOLAR ENERGY
+        ========================== */
+
+        .solar-section {
+            background: var(--green-dark);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .solar-section .section-title h2,
+        .solar-section .section-title p {
+            color: white;
+        }
+
+        .solar-section .section-title p {
+            opacity: .75;
+        }
+
+        .solar-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .solar-dashboard {
+            background: rgba(255,255,255,.08);
+            padding: 30px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,.1);
+        }
+
+        .energy-circle {
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            margin: auto;
+            display: grid;
+            place-items: center;
+            background:
+                radial-gradient(circle at center, var(--green-dark) 58%, transparent 59%),
+                conic-gradient(#ffd45a 0deg 270deg, rgba(255,255,255,.15) 270deg);
+        }
+
+        .energy-circle div {
+            text-align: center;
+        }
+
+        .energy-circle strong {
+            display: block;
+            font-size: 40px;
+        }
+
+        .energy-circle small {
+            opacity: .7;
+        }
+
+        .energy-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .energy-box {
+            padding: 18px;
+            background: rgba(255,255,255,.08);
+            border-radius: 15px;
+        }
+
+        .energy-box span {
+            font-size: 13px;
+            opacity: .7;
+        }
+
+        .energy-box strong {
+            display: block;
+            color: #b8e986;
+            font-size: 23px;
+        }
+
+        .solar-content h3 {
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .solar-content p {
+            opacity: .75;
+            margin-bottom: 20px;
+        }
+
+        .solar-list {
+            list-style: none;
+        }
+
+        .solar-list li {
+            margin: 13px 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .solar-list li span {
+            color: #b8e986;
+        }
+
+
+        /* =========================
+           WASTE MANAGEMENT
+        ========================== */
+
+        .waste {
+            background: white;
+        }
+
+        .waste-grid {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 20px;
+        }
+
+        .waste-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 20px;
+            background: #f6faf7;
+            border-bottom: 5px solid var(--green);
+            transition: .3s;
+        }
+
+        .waste-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .bin {
+            width: 75px;
+            height: 85px;
+            margin: auto auto 18px;
+            border-radius: 8px 8px 15px 15px;
+            display: grid;
+            place-items: center;
+            font-size: 35px;
+            color: white;
+        }
+
+        .green-bin {
+            background: #239b56;
+        }
+
+        .blue-bin {
+            background: #287bb5;
+        }
+
+        .yellow-bin {
+            background: #e3a800;
+        }
+
+        .red-bin {
+            background: #d84c4c;
+        }
+
+        .waste-card h3 {
+            margin-bottom: 7px;
+        }
+
+        .waste-card p {
+            font-size: 13px;
+            color: var(--gray);
+        }
+
+
+        /* =========================
+           GALLERY / IMAGES
+        ========================== */
+
+        .gallery {
+            background: #f5fbf7;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            grid-template-rows: 220px 220px;
+            gap: 18px;
+        }
+
+        .gallery-item {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding: 22px;
+            color: white;
+            background: linear-gradient(135deg,#198754,#b8e986);
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-row: span 2;
+            background: linear-gradient(135deg,#14532d,#35b978);
+        }
+
+        .gallery-item:nth-child(2) {
+            background: linear-gradient(135deg,#a66a00,#ffd45a);
+        }
+
+        .gallery-item:nth-child(3) {
+            background: linear-gradient(135deg,#125b78,#63c5e9);
+        }
+
+        .gallery-item:nth-child(4) {
+            background: linear-gradient(135deg,#386641,#a7c957);
+        }
+
+        .gallery-item:nth-child(5) {
+            background: linear-gradient(135deg,#7251a5,#d2b7f3);
+        }
+
+        .gallery-icon {
+            position: absolute;
+            font-size: 100px;
+            right: 20px;
+            top: 20px;
+            opacity: .35;
+        }
+
+        .gallery-item h3 {
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact {
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h2 {
+            font-size: 42px;
+            color: var(--green-dark);
+            margin-bottom: 15px;
+        }
+
+        .contact-info > p {
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            margin: 22px 0;
+            align-items: center;
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--mint);
+            display: grid;
+            place-items: center;
+            color: var(--green);
+            font-size: 20px;
+        }
+
+        .contact-item strong {
+            display: block;
+        }
+
+        .contact-item span {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .contact-form {
+            background: #f5faf7;
+            padding: 35px;
+            border-radius: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #dce8e0;
+            border-radius: 10px;
+            outline: none;
+            font-family: inherit;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--green);
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #0d2d20;
+            color: white;
+            padding: 55px 0 20px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        footer h3 {
+            margin-bottom: 15px;
+        }
+
+        footer p {
+            color: rgba(255,255,255,.65);
+            font-size: 14px;
+        }
+
+        footer ul {
+            list-style: none;
+        }
+
+        footer li {
+            margin: 10px 0;
+            color: rgba(255,255,255,.65);
+            font-size: 14px;
+        }
+
+        footer li:hover {
+            color: #b8e986;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,.1);
+            padding-top: 20px;
+            text-align: center;
+            color: rgba(255,255,255,.5);
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================== */
+
+        @media(max-width: 900px) {
+
+            .hero-content {
+                width: 100%;
+            }
+
+            .hero-art {
+                opacity: .2;
+                right: -80px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .stat:nth-child(2) {
+                border-right: none;
+            }
+
+            .about-grid,
+            .solar-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .activity-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .waste-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                text-align: center;
+                padding: 25px;
+                display: none;
+                box-shadow: 0 10px 20px rgba(0,0,0,.08);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+        }
+
+        @media(max-width: 600px) {
+
+            .section {
+                padding: 65px 0;
+            }
+
+            .hero {
+                min-height: 850px;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .hero-art {
+                width: 300px;
+                height: 300px;
+                bottom: 20px;
+            }
+
+            .stats-grid,
+            .activity-grid,
+            .waste-grid,
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat {
+                border-right: none;
+                border-bottom: 1px solid #e5eee9;
+            }
+
+            .gallery-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(5,200px);
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-row: auto;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content h2,
+            .contact-info h2 {
+                font-size: 32px;
+            }
+
+            .solar-content h3 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+        <div class="container">
+            <nav>
+
+                <a href="#home" class="logo">
+                    <div class="logo-icon">🌱</div>
+                    GreenHaven
+                </a>
+
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">College</a></li>
+                    <li><a href="#activities">Activities</a></li>
+                    <li><a href="#solar">Solar Energy</a></li>
+                    <li><a href="#waste">Waste</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+                <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <div class="badge">
+                    🌍 Building a Sustainable Future
+                </div>
+
+                <h1>
+                    Our Campus.<br>
+                    <span>Our Planet.</span><br>
+                    Our Future.
+                </h1>
+
+                <p>
+                    Welcome to GreenHaven College — a campus where
+                    education meets sustainability. Discover how our
+                    students and staff are creating a cleaner, greener
+                    and healthier environment.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#about" class="btn btn-primary">
+                        Explore Campus →
+                    </a>
+
+                    <a href="#contact" class="btn btn-outline">
+                        Join the Movement
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Decorative illustration -->
+        <div class="hero-art">
+            <div class="sun"></div>
+            <div class="hill"></div>
+            <div class="hill two"></div>
+            <div class="tree">🌳</div>
+            <div class="tree two">🌲</div>
+            <div class="solar"></div>
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         STATISTICS
+    ========================== -->
+
+    <section class="stats">
+
+        <div class="container">
+
+            <div class="stats-grid">
+
+                <div class="stat">
+                    <h3>75%</h3>
+                    <p>Renewable Energy</p>
+                </div>
+
+                <div class="stat">
+                    <h3>500+</h3>
+                    <p>Trees on Campus</p>
+                </div>
+
+                <div class="stat">
+                    <h3>90%</h3>
+                    <p>Waste Segregation</p>
+                </div>
+
+                <div class="stat">
+                    <h3>25+</h3>
+                    <p>Green Initiatives</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         COLLEGE INTRODUCTION
+    ========================== -->
+
+    <section class="section about" id="about">
+
+        <div class="container">
+
+            <div class="about-grid">
+
+                <div class="about-visual">
+
+                    <h3>
+                        Learning today.<br>
+                        Protecting tomorrow.
+                    </h3>
+
+                    <p>
+                        Sustainability is not just a project at
+                        GreenHaven — it is part of our campus culture.
+                    </p>
+
+                    <div class="leaf">🌿</div>
+
+                </div>
+
+                <div class="about-content">
+
+                    <div class="section-title" style="text-align:left;margin-bottom:20px;">
+                        <div class="small-title">About Our College</div>
+                        <h2>Where Education Goes Green</h2>
+                    </div>
+
+                    <p>
+                        GreenHaven College is committed to creating an
+                        environmentally responsible campus. We believe
+                        students should learn not only from classrooms,
+                        but also from the environment around them.
+                    </p>
+
+                    <p>
+                        Our campus combines modern education with
+                        sustainable practices including renewable energy,
+                        rainwater harvesting, tree plantation, recycling,
+                        organic gardening and environmental awareness.
+                    </p>
+
+                    <div class="features">
+
+                        <div class="feature">
+                            <span>✓</span> Eco-friendly Campus
+                        </div>
+
+                        <div class="feature">
+                            <span>✓</span> Renewable Energy
+                        </div>
+
+                        <div class="feature">
+                            <span>✓</span> Organic Gardening
+                        </div>
+
+                        <div class="feature">
+                            <span>✓</span> Water Conservation
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GREEN CAMPUS ACTIVITIES
+    ========================== -->
+
+    <section class="section activities" id="activities">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <div class="small-title">What We Do</div>
+
+                <h2>Green Campus Activities</h2>
+
+                <p>
+                    Our students actively participate in programs
+                    that make our campus healthier and more sustainable.
+                </p>
+
+            </div>
+
+
+            <div class="activity-grid">
+
+                <div class="activity-card">
+                    <div class="activity-icon">🌳</div>
+                    <div class="activity-body">
+                        <h3>Tree Plantation</h3>
+                        <p>
+                            Students regularly plant and maintain native
+                            trees to increase campus greenery.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="activity-card">
+                    <div class="activity-icon">☀️</div>
+                    <div class="activity-body">
+                        <h3>Solar Energy</h3>
+                        <p>
+                            Solar panels help provide clean and renewable
+                            electricity to campus facilities.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="activity-card">
+                    <div class="activity-icon">💧</div>
+                    <div class="activity-body">
+                        <h3>Water Conservation</h3>
+                        <p>
+                            Rainwater harvesting and responsible water
+                            usage help conserve this valuable resource.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="activity-card">
+                    <div class="activity-icon">🌱</div>
+                    <div class="activity-body">
+                        <h3>Organic Garden</h3>
+                        <p>
+                            Our campus garden demonstrates sustainable
+                            farming and chemical-free cultivation.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="activity-card">
+                    <div class="activity-icon">♻️</div>
+                    <div class="activity-body">
+                        <h3>Recycling Drives</h3>
+                        <p>
+                            Students collect and separate recyclable
+                            materials through regular campus drives.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="activity-card">
+                    <div class="activity-icon">🚲</div>
+                    <div class="activity-body">
+                        <h3>Green Transport</h3>
+                        <p>
+                            Cycling and shared transportation are promoted
+                            to reduce unnecessary carbon emissions.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         SOLAR ENERGY
+    ========================== -->
+
+    <section class="section solar-section" id="solar">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <div class="small-title">Clean Power</div>
+
+                <h2>Solar Energy at Our Campus</h2>
+
+                <p>
+                    Harnessing the power of sunlight to build a cleaner
+                    and more sustainable campus.
+                </p>
+
+            </div>
+
+
+            <div class="solar-grid">
+
+                <div class="solar-dashboard">
+
+                    <div class="energy-circle">
+                        <div>
+                            <strong>75%</strong>
+                            <small>Solar Powered</small>
+                        </div>
+                    </div>
+
+                    <div class="energy-info">
+
+                        <div class="energy-box">
+                            <span>Solar Capacity</span>
+                            <strong>250 kW</strong>
+                        </div>
+
+                        <div class="energy-box">
+                            <span>CO₂ Reduced</span>
+                            <strong>180T</strong>
+                        </div>
+
+                        <div class="energy-box">
+                            <span>Clean Energy</span>
+                            <strong>75%</strong>
+                        </div>
+
+                        <div class="energy-box">
+                            <span>Panels</span>
+                            <strong>620+</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="solar-content">
+
+                    <h3>
+                        Powering education with sunlight.
+                    </h3>
+
+                    <p>
+                        Solar panels installed across campus help reduce
+                        dependence on conventional electricity while
+                        providing students with a real-world example of
+                        renewable energy technology.
+                    </p>
+
+                    <ul class="solar-list">
+
+                        <li>
+                            <span>✓</span>
+                            Rooftop solar panels
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Reduced electricity consumption
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Lower carbon emissions
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Renewable energy awareness
+                        </li>
+
+                        <li>
+                            <span>✓</span>
+                            Student solar-energy projects
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         WASTE MANAGEMENT
+    ========================== -->
+
+    <section class="section waste" id="waste">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <div class="small-title">Reduce • Reuse • Recycle</div>
+
+                <h2>Smart Waste Management</h2>
+
+                <p>
+                    Waste is separated at source so that recyclable,
+                    organic and other materials can be handled properly.
+                </p>
+
+            </div>
+
+
+            <div class="waste-grid">
+
+                <div class="waste-card">
+
+                    <div class="bin green-bin">🍃</div>
+
+                    <h3>Organic Waste</h3>
+
+                    <p>
+                        Food scraps and garden waste are converted into
+                        compost for campus gardens.
+                    </p>
+
+                </div>
+
+
+                <div class="waste-card">
+
+                    <div class="bin blue-bin">♻️</div>
+
+                    <h3>Recyclable Waste</h3>
+
+                    <p>
+                        Paper, plastic and other recyclable materials
+                        are collected separately.
+                    </p>
+
+                </div>
+
+
+                <div class="waste-card">
+
+                    <div class="bin yellow-bin">📦</div>
+
+                    <h3>Paper & Cardboard</h3>
+
+                    <p>
+                        Paper products are collected and sent for
+                        responsible recycling.
+                    </p>
+
+                </div>
+
+
+                <div class="waste-card">
+
+                    <div class="bin red-bin">⚠️</div>
+
+                    <h3>Special Waste</h3>
+
+                    <p>
+                        E-waste and other special materials are handled
+                        through appropriate collection systems.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         GALLERY / IMAGES
+    ========================== -->
+
+    <section class="section gallery" id="gallery">
+
+        <div class="container">
+
+            <div class="section-title">
+
+                <div class="small-title">Campus Life</div>
+
+                <h2>Green Campus Gallery</h2>
+
+                <p>
+                    A glimpse of our sustainable campus and the people
+                    who make it greener every day.
+                </p>
+
+            </div>
+
+
+            <div class="gallery-grid">
+
+                <div class="gallery-item">
+
+                    <div class="gallery-icon">🌳</div>
+
+                    <h3>Green Campus</h3>
+
+                </div>
+
+
+                <div class="gallery-item">
+
+                    <div class="gallery-icon">☀️</div>
+
+                    <h3>Solar Energy</h3>
+
+                </div>
+
+
+                <div class="gallery-item">
+
+                    <div class="gallery-icon">🌱</div>
+
+                    <h3>Organic Garden</h3>
+
+                </div>
+
+
+                <div class="gallery-item">
+
+                    <div class="gallery-icon">♻️</div>
+
+                    <h3>Recycling Drive</h3>
+
+                </div>
+
+
+                <div class="gallery-item">
+
+                    <div class="gallery-icon">💧</div>
+
+                    <h3>Water Conservation</h3>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT SECTION
+    ========================== -->
+
+    <section class="section contact" id="contact">
+
+        <div class="container">
+
+            <div class="contact-grid">
+
+                <div class="contact-info">
+
+                    <div class="small-title">Get Involved</div>
+
+                    <h2>Be Part of the Green Movement</h2>
+
+                    <p>
+                        Have an idea for a sustainable campus project?
+                        Want to volunteer? Contact our Green Campus team.
+                    </p>
+
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">📍</div>
+
+                        <div>
+                            <strong>Campus Address</strong>
+                            <span>GreenHaven College, Bengaluru</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">📧</div>
+
+                        <div>
+                            <strong>Email</strong>
+                            <span>green@greenhaven.edu</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">📞</div>
+
+                        <div>
+                            <strong>Phone</strong>
+                            <span>+91 98765 43210</span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">🕐</div>
+
+                        <div>
+                            <strong>Green Office Hours</strong>
+                            <span>Monday – Friday, 9:00 AM – 5:00 PM</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <form class="contact-form" onsubmit="sendMessage(event)">
+
+                    <h3 style="margin-bottom:20px;">
+                        Send Us a Message 🌿
+                    </h3>
+
+                    <div class="form-group">
+
+                        <label>Your Name</label>
+
+                        <input
+                            type="text"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Email Address</label>
+
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Topic</label>
+
+                        <select required>
+
+                            <option value="">
+                                Select a topic
+                            </option>
+
+                            <option>
+                                Green Campus Volunteer
+                            </option>
+
+                            <option>
+                                Tree Plantation
+                            </option>
+
+                            <option>
+                                Solar Energy
+                            </option>
+
+                            <option>
+                                Waste Management
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Message</label>
+
+                        <textarea
+                            placeholder="Write your message..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button class="btn btn-primary" type="submit">
+                        Send Message 🌱
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div>
+
+                    <div class="logo" style="color:white;">
+                        <div class="logo-icon">🌱</div>
+                        GreenHaven
+                    </div>
+
+                    <p style="margin-top:15px;">
+                        Creating an environmentally responsible
+                        campus through education, innovation and
+                        student participation.
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h3>Campus</h3>
+
+                    <ul>
+                        <li><a href="#about">About College</a></li>
+                        <li><a href="#activities">Activities</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+
+                </div>
+
+
+                <div>
+
+                    <h3>Green Initiatives</h3>
+
+                    <ul>
+                        <li><a href="#solar">Solar Energy</a></li>
+                        <li><a href="#waste">Waste Management</a></li>
+                        <li>Tree Plantation</li>
+                    </ul>
+
+                </div>
+
+
+                <div>
+
+                    <h3>Connect</h3>
+
+                    <ul>
+                        <li>Instagram</li>
+                        <li>Facebook</li>
+                        <li>LinkedIn</li>
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <div class="copyright">
+
+                © 2026 GreenHaven College.
+                Designed for a greener future 🌍
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /* Mobile Navigation */
+
+        function toggleMenu() {
+
+            document
+                .getElementById("navLinks")
+                .classList
+                .toggle("active");
+
+        }
+
+
+        /* Close menu after clicking */
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+
+            link.addEventListener("click", () => {
+
+                document
+                    .getElementById("navLinks")
+                    .classList
+                    .remove("active");
+
+            });
+
+        });
+
+
+        /* Contact form */
+
+        function sendMessage(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Thank you for contacting GreenHaven College! 🌱\n\nYour message has been received."
+            );
+
+            event.target.reset();
+
+        }
+
+
+        /* Simple scroll animation */
+
+        const cards = document.querySelectorAll(
+            ".activity-card, .waste-card, .gallery-item"
+        );
+
+        const observer = new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+
+        cards.forEach(card => {
+
+            card.style.opacity = "0";
+            card.style.transform = "translateY(30px)";
+            card.style.transition = "all .6s ease";
+
+            observer.observe(card);
+
+        });
+
+    </script>
+
+</body>
+</html>
